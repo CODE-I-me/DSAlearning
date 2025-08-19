@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Arrays in DSA</title>
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+            line-height: 1.7;
+            padding: 40px 15px;
+            background-color: #f9f9f9;
+        }
+        h1, h2, h3 {
+            color: #343a40;
+            margin-top: 30px;
+        }
+        ul, ol {
+            margin-left: 20px;
+        }
+        pre {
+            background: #f4f4f4;
+            padding: 15px;
+            border-radius: 6px;
+            overflow-x: auto;
+        }
+        .container {
+            max-width: 960px;
+            margin: auto;
+            background: #fff;
+            padding: 40px;
+            box-shadow: 0 0 20px rgba(0,0,0,0.1);
+        }
+        .assignment {
+            background: #e9f7ef;
+            padding: 20px;
+            border-left: 5px solid #2ecc71;
+            margin-top: 30px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Arrays in Data Structures</h1>
+
+        <p>An <strong>array</strong> is a collection of data storage locations, each having the same data type and grouped under a single name. It's used to store elements in <strong>contiguous memory</strong> locations.</p>
+
+        <h2>Types of Arrays</h2>
+        <ul>
+            <li><strong>Single-Dimensional Array:</strong> Only one subscript. Eg: arr[5]</li>
+            <li><strong>Multi-Dimensional Array:</strong> More than one subscript. Eg: arr[2][3]</li>
+        </ul>
+
+        <h2>Single-Dimensional Array Details</h2>
+        <ul>
+            <li>Subscript identifies the index of an element</li>
+            <li>Index starts from 0</li>
+            <li>Elements are stored in sequential memory locations</li>
+        </ul>
+
+        <p>For example, an array <code>int age[5]</code> will be stored as:</p>
+        <pre>
+Index:     0    1    2    3    4
+Value:    18   22   25   19   20
+Address: 2120 2122 2124 2126 2128 (assuming 2 bytes for int)
+        </pre>
+
+        <h2>Accessing Array Elements</h2>
+        <p>To access or assign values, use indexing:</p>
+        <pre><code>double salary = balance[9];</code></pre>
+
+        <h2>Basic Output Example</h2>
+        <pre><code>
+Element[0] = 100
+Element[1] = 101
+Element[2] = 102
+Element[3] = 103
+Element[4] = 104
+...
+Element[9] = 109
+        </code></pre>
+
+        <h2>C Program: Calculate Average Using Array</h2>
+        <pre><code>#include &lt;stdio.h&gt;
+
+int main() {
+    int marks[10], i, n, sum = 0, average;
+    printf("Enter number of elements: ");
+    scanf("%d", &n);
+    
+    for(i = 0; i < n; ++i) {
+        printf("Enter number%d: ", i + 1);
+        scanf("%d", &marks[i]);
+        sum += marks[i];
+    }
+
+    average = sum / n;
+    printf("Average = %d", average);
+    return 0;
+}
+        </code></pre>
+
+        <h3>Output</h3>
+        <pre>
+Enter n: 5
+Enter number1: 45
+Enter number2: 35
+Enter number3: 38
+Enter number4: 31
+Enter number5: 49
+Average = 39
+        </pre>
+
+        <h2>Finding the Largest Element in Array</h2>
+        <p>Steps:</p>
+        <ul>
+            <li>Assume first element as largest</li>
+            <li>Compare it with all other elements</li>
+            <li>If found larger, update</li>
+        </ul>
+
+        <h2>More Use Cases</h2>
+        <ul>
+            <li>Search elements using index</li>
+            <li>Insert and delete elements</li>
+            <li>Sort the elements (ascending/descending)</li>
+        </ul>
+
+        <h2>Java Example: Array Traversal</h2>
+        <pre><code>public class ArrayExample {
+    public static void main(String[] args) {
+        int[] arr = {10, 20, 30, 40, 50};
+        for (int i = 0; i &lt; arr.length; i++) {
+            System.out.println("Element at index " + i + ": " + arr[i]);
+        }
+    }
+}
+        </code></pre>
+
+        <div class="assignment">
+            <h2>📘 Assignments</h2>
+            <ol>
+                <li>Write a program to find the <strong>smallest</strong> number in an array.</li>
+                <li>Write a program to calculate the <strong>average</strong> of 10 numbers.</li>
+                <li>Write a program to <strong>print even numbers</strong> from an array of 10 integers.</li>
+                <li>Read two integer arrays of size 5 and calculate their <strong>sum array</strong>. (C[i] = A[i] + B[i])</li>
+            </ol>
+        </div>
+    </div>
+    <div style="margin-top: 30px;">
+            <a href="services.html" class="btn btn-primary">&larr; Back to DSA Topics</a>
+        </div>
+</body>
+</html>

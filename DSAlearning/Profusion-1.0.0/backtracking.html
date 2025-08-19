@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Backtracking in DSA</title>
+  <link rel="stylesheet" href="css/bootstrap.min.css" />
+  <style>
+    body {
+      font-family: 'Poppins', sans-serif;
+      line-height: 1.7;
+      padding: 40px 15px;
+      background-color: #f9f9f9;
+    }
+    h1, h2, h3 {
+      color: #2c3e50;
+      margin-top: 30px;
+    }
+    ul, ol {
+      margin-left: 20px;
+    }
+    pre {
+      background: #f4f4f4;
+      padding: 15px;
+      border-radius: 6px;
+      overflow-x: auto;
+    }
+    .container {
+      max-width: 960px;
+      margin: auto;
+      background: #fff;
+      padding: 40px;
+      box-shadow: 0 0 20px rgba(0,0,0,0.1);
+    }
+    .assignment {
+      background: #e8f0fe;
+      padding: 20px;
+      border-left: 5px solid #1e88e5;
+      margin-top: 30px;
+    }
+    .btn-back {
+      display: inline-block;
+      margin-top: 30px;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>Backtracking in Data Structures</h1>
+
+    <p><strong>Backtracking</strong> is a general algorithmic technique that tries to build a solution incrementally and removes those solutions that fail to satisfy the constraints of the problem. It's mostly used to solve problems that require all possible combinations or permutations.</p>
+
+    <h2>Concept</h2>
+    <ul>
+      <li>Backtracking works like recursion but with more control.</li>
+      <li>If the current solution is not valid, it “backtracks” to the previous state and tries a different path.</li>
+      <li>It is often used for solving constraint satisfaction problems.</li>
+    </ul>
+
+    <h2>Key Problems Solved Using Backtracking</h2>
+    <ul>
+      <li>N-Queens Problem</li>
+      <li>Sudoku Solver</li>
+      <li>Rat in a Maze</li>
+      <li>Word Search in Matrix</li>
+      <li>Subsets and Permutations</li>
+    </ul>
+
+    <h2>Example: N-Queens Problem (Java)</h2>
+    <pre><code>public class NQueens {
+    static int N = 4;
+
+    static void printSolution(int board[][]) {
+        for (int i = 0; i &lt; N; i++) {
+            for (int j = 0; j &lt; N; j++)
+                System.out.print(" " + board[i][j] + " ");
+            System.out.println();
+        }
+    }
+
+    static boolean isSafe(int board[][], int row, int col) {
+        for (int i = 0; i &lt; col; i++)
+            if (board[row][i] == 1)
+                return false;
+
+        for (int i = row, j = col; i &gt;= 0 &amp;&amp; j &gt;= 0; i--, j--)
+            if (board[i][j] == 1)
+                return false;
+
+        for (int i = row, j = col; j &gt;= 0 &amp;&amp; i &lt; N; i++, j--)
+            if (board[i][j] == 1)
+                return false;
+
+        return true;
+    }
+
+    static boolean solveNQUtil(int board[][], int col) {
+        if (col &gt;= N)
+            return true;
+
+        for (int i = 0; i &lt; N; i++) {
+            if (isSafe(board, i, col)) {
+                board[i][col] = 1;
+
+                if (solveNQUtil(board, col + 1))
+                    return true;
+
+                board[i][col] = 0; // BACKTRACK
+            }
+        }
+
+        return false;
+    }
+
+    static boolean solveNQ() {
+        int board[][] = new int[N][N];
+
+        if (!solveNQUtil(board, 0)) {
+            System.out.print("Solution does not exist");
+            return false;
+        }
+
+        printSolution(board);
+        return true;
+    }
+
+    public static void main(String args[]) {
+        solveNQ();
+    }
+}
+    </code></pre>
+
+    <h2>Time Complexity</h2>
+    <p>Backtracking often has exponential time complexity, usually O(N!), depending on the problem (like permutations, N-Queens, etc.).</p>
+
+    <h2>Real-World Applications</h2>
+    <ul>
+      <li>Solving puzzles (Sudoku, crosswords)</li>
+      <li>Finding paths in mazes</li>
+      <li>Parsing and syntax checking</li>
+      <li>Optimizing decision making (e.g., decision trees)</li>
+    </ul>
+
+    <div class="assignment">
+      <h2>📘 Assignments</h2>
+      <ol>
+        <li>Solve the N-Queens problem for N = 8.</li>
+        <li>Write a backtracking solution for solving a Sudoku board.</li>
+        <li>Implement Word Search in a 2D grid using backtracking.</li>
+        <li>Generate all subsets of an array using backtracking.</li>
+      </ol>
+    </div>
+
+    <a href="services.html" class="btn btn-primary btn-back">&larr; Back to DSA Topics</a>
+  </div>
+</body>
+</html>

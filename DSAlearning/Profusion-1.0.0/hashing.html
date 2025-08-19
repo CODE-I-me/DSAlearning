@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Hashing in DSA</title>
+  <link rel="stylesheet" href="css/bootstrap.min.css" />
+  <style>
+    body {
+      font-family: 'Poppins', sans-serif;
+      line-height: 1.7;
+      padding: 40px 15px;
+      background-color: #f9f9f9;
+    }
+    h1, h2, h3 {
+      color: #2c3e50;
+      margin-top: 30px;
+    }
+    ul, ol {
+      margin-left: 20px;
+    }
+    pre {
+      background: #f4f4f4;
+      padding: 15px;
+      border-radius: 6px;
+      overflow-x: auto;
+    }
+    .container {
+      max-width: 960px;
+      margin: auto;
+      background: #fff;
+      padding: 40px;
+      box-shadow: 0 0 20px rgba(0,0,0,0.1);
+    }
+    .assignment {
+      background: #fef9e7;
+      padding: 20px;
+      border-left: 5px solid #f1c40f;
+      margin-top: 30px;
+    }
+    .btn-back {
+      display: inline-block;
+      margin-top: 30px;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>Hashing in Data Structures</h1>
+
+    <p><strong>Hashing</strong> is a technique used to uniquely identify a specific object from a group of similar objects. It involves the use of a <strong>hash function</strong> to map data of arbitrary size to a fixed size (called a hash table or hash map).</p>
+
+    <h2>Key Terms</h2>
+    <ul>
+      <li><strong>Hash Function:</strong> A function that takes input and returns an integer (the hash code).</li>
+      <li><strong>Hash Table:</strong> A data structure that stores key-value pairs using a hash function.</li>
+      <li><strong>Collision:</strong> When two keys map to the same hash index.</li>
+    </ul>
+
+    <h2>Collision Resolution Techniques</h2>
+    <ul>
+      <li><strong>Chaining:</strong> Use a linked list at each index to store multiple keys.</li>
+      <li><strong>Open Addressing:</strong> Find another open slot within the array. Variants:
+        <ul>
+          <li>Linear Probing</li>
+          <li>Quadratic Probing</li>
+          <li>Double Hashing</li>
+        </ul>
+      </li>
+    </ul>
+
+    <h2>Applications of Hashing</h2>
+    <ul>
+      <li>Data retrieval in constant time</li>
+      <li>Counting frequencies</li>
+      <li>Detecting duplicates</li>
+      <li>Caching (e.g., DNS resolution)</li>
+      <li>Cryptography (e.g., password hashing)</li>
+    </ul>
+
+    <h2>Java Example: Using HashMap</h2>
+    <pre><code>import java.util.*;
+
+public class HashingExample {
+    public static void main(String[] args) {
+        HashMap&lt;String, Integer&gt; map = new HashMap<>();
+
+        // Inserting data
+        map.put("apple", 3);
+        map.put("banana", 2);
+        map.put("mango", 5);
+
+        // Accessing data
+        System.out.println("Mango quantity: " + map.get("mango"));
+
+        // Checking presence
+        if (map.containsKey("banana")) {
+            System.out.println("Banana is available.");
+        }
+
+        // Traversal
+        for (String key : map.keySet()) {
+            System.out.println(key + ": " + map.get(key));
+        }
+    }
+}
+    </code></pre>
+
+    <h2>Time Complexities</h2>
+    <ul>
+      <li>Insert: O(1) on average</li>
+      <li>Search: O(1) on average</li>
+      <li>Delete: O(1) on average</li>
+    </ul>
+
+    <div class="assignment">
+      <h2>📘 Assignments</h2>
+      <ol>
+        <li>Write a program to count the frequency of each element in an array using HashMap.</li>
+        <li>Check if two strings are anagrams using hashing.</li>
+        <li>Find the first non-repeating character in a string.</li>
+        <li>Implement linear probing in an open-addressing hash table.</li>
+      </ol>
+    </div>
+
+    <a href="services.html" class="btn btn-primary btn-back">&larr; Back to DSA Topics</a>
+  </div>
+</body>
+</html>

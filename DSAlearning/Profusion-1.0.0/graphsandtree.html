@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Trees and Graphs in DSA</title>
+  <link rel="stylesheet" href="css/bootstrap.min.css" />
+  <style>
+    body {
+      font-family: 'Poppins', sans-serif;
+      line-height: 1.7;
+      padding: 40px 15px;
+      background-color: #f9f9f9;
+    }
+    h1, h2, h3 {
+      color: #343a40;
+      margin-top: 30px;
+    }
+    ul, ol {
+      margin-left: 20px;
+    }
+    pre {
+      background: #f4f4f4;
+      padding: 15px;
+      border-radius: 6px;
+      overflow-x: auto;
+    }
+    .container {
+      max-width: 960px;
+      margin: auto;
+      background: #fff;
+      padding: 40px;
+      box-shadow: 0 0 20px rgba(0,0,0,0.1);
+    }
+    .assignment {
+      background: #e9f7ef;
+      padding: 20px;
+      border-left: 5px solid #2ecc71;
+      margin-top: 30px;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>Trees and Graphs in DSA</h1>
+
+    <h2>Trees</h2>
+    <p>A <strong>Tree</strong> is a non-linear hierarchical data structure consisting of nodes connected by edges. It starts from a root node and branches out to child nodes.</p>
+
+    <h3>Terminology</h3>
+    <ul>
+      <li><strong>Root:</strong> Topmost node</li>
+      <li><strong>Parent/Child:</strong> Immediate upper/lower node</li>
+      <li><strong>Leaf:</strong> Node with no children</li>
+      <li><strong>Subtree:</strong> Smaller tree within a tree</li>
+      <li><strong>Height:</strong> Longest path from root to leaf</li>
+    </ul>
+
+    <h3>Binary Tree</h3>
+    <p>A tree where each node can have at most 2 children (left and right).</p>
+
+    <h3>Binary Search Tree (BST)</h3>
+    <p>BST is a special binary tree where the left subtree has smaller values, and the right subtree has greater values.</p>
+
+    <h3>Traversal Methods</h3>
+    <ul>
+      <li><strong>Inorder:</strong> Left → Root → Right</li>
+      <li><strong>Preorder:</strong> Root → Left → Right</li>
+      <li><strong>Postorder:</strong> Left → Right → Root</li>
+      <li><strong>Level Order:</strong> BFS using Queue</li>
+    </ul>
+
+    <h3>Java Code for Inorder Traversal</h3>
+    <pre><code>class Node {
+    int data;
+    Node left, right;
+
+    Node(int item) {
+        data = item;
+        left = right = null;
+    }
+}
+
+public class BinaryTree {
+    Node root;
+
+    void inorder(Node node) {
+        if (node != null) {
+            inorder(node.left);
+            System.out.print(node.data + " ");
+            inorder(node.right);
+        }
+    }
+
+    public static void main(String[] args) {
+        BinaryTree tree = new BinaryTree();
+        tree.root = new Node(10);
+        tree.root.left = new Node(20);
+        tree.root.right = new Node(30);
+        tree.inorder(tree.root);
+    }
+}
+    </code></pre>
+
+    <h2>Graphs</h2>
+    <p>A <strong>Graph</strong> is a non-linear data structure consisting of nodes (vertices) and edges connecting them. It can be used to represent networks, paths, etc.</p>
+
+    <h3>Types of Graphs</h3>
+    <ul>
+      <li><strong>Directed Graph (Digraph):</strong> Edges have direction</li>
+      <li><strong>Undirected Graph:</strong> Edges do not have direction</li>
+      <li><strong>Weighted Graph:</strong> Edges have weights</li>
+      <li><strong>Unweighted Graph:</strong> All edges have same weight</li>
+    </ul>
+
+    <h3>Graph Representations</h3>
+    <ul>
+      <li><strong>Adjacency Matrix:</strong> 2D array representation</li>
+      <li><strong>Adjacency List:</strong> Array of lists for each vertex</li>
+    </ul>
+
+    <h3>Traversal Methods</h3>
+    <ul>
+      <li><strong>BFS (Breadth-First Search)</strong> – Uses Queue</li>
+      <li><strong>DFS (Depth-First Search)</strong> – Uses Stack or Recursion</li>
+    </ul>
+
+    <h3>Java Code: BFS Using Adjacency List</h3>
+    <pre><code>import java.util.*;
+
+class Graph {
+    private int V;
+    private LinkedList&lt;Integer&gt; adj[];
+
+    Graph(int v) {
+        V = v;
+        adj = new LinkedList[v];
+        for (int i = 0; i &lt; v; ++i)
+            adj[i] = new LinkedList();
+    }
+
+    void addEdge(int v, int w) {
+        adj[v].add(w);
+    }
+
+    void BFS(int s) {
+        boolean visited[] = new boolean[V];
+        LinkedList&lt;Integer&gt; queue = new LinkedList&lt;&gt;();
+
+        visited[s] = true;
+        queue.add(s);
+
+        while (!queue.isEmpty()) {
+            s = queue.poll();
+            System.out.print(s + " ");
+
+            for (int n : adj[s]) {
+                if (!visited[n]) {
+                    visited[n] = true;
+                    queue.add(n);
+                }
+            }
+        }
+    }
+
+    public static void main(String args[]) {
+        Graph g = new Graph(4);
+        g.addEdge(0, 1);
+        g.addEdge(0, 2);
+        g.addEdge(1, 2);
+        g.addEdge(2, 0);
+        g.addEdge(2, 3);
+        g.addEdge(3, 3);
+
+        System.out.println("BFS starting from vertex 2:");
+        g.BFS(2);
+    }
+}
+    </code></pre>
+
+    <h2>Time Complexity</h2>
+    <ul>
+      <li>Tree Traversal: O(n)</li>
+      <li>DFS/BFS on Graph: O(V + E)</li>
+    </ul>
+
+    <div class="assignment">
+      <h2>📘 Assignments</h2>
+      <ol>
+        <li>Create a binary search tree and perform all types of traversals.</li>
+        <li>Implement a graph using an adjacency list.</li>
+        <li>Write code to check if a binary tree is a BST.</li>
+        <li>Implement BFS and DFS for an undirected graph.</li>
+        <li>Find the shortest path in an unweighted graph using BFS.</li>
+      </ol>
+    </div>
+
+    <div style="margin-top: 30px;">
+      <a href="services.html" class="btn btn-primary">&larr; Back to DSA Topics</a>
+    </div>
+  </div>
+</body>
+</html>

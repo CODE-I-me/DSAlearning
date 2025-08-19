@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Binary Trees in DSA</title>
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+            line-height: 1.7;
+            padding: 40px 15px;
+            background-color: #f9f9f9;
+        }
+        h1, h2, h3 {
+            color: #343a40;
+            margin-top: 30px;
+        }
+        ul, ol {
+            margin-left: 20px;
+        }
+        pre {
+            background: #f4f4f4;
+            padding: 15px;
+            border-radius: 6px;
+            overflow-x: auto;
+        }
+        .container {
+            max-width: 960px;
+            margin: auto;
+            background: #fff;
+            padding: 40px;
+            box-shadow: 0 0 20px rgba(0,0,0,0.1);
+        }
+        .assignment {
+            background: #e9f7ef;
+            padding: 20px;
+            border-left: 5px solid #2ecc71;
+            margin-top: 30px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Binary Trees in Data Structures</h1>
+
+        <p>A <strong>Binary Tree</strong> is a hierarchical data structure in which each node has at most two children, referred to as the left child and the right child. It's used extensively in searching, sorting, and hierarchical data representation.</p>
+
+        <h2>Key Concepts</h2>
+        <ul>
+            <li><strong>Root</strong> – The top node in a tree.</li>
+            <li><strong>Parent</strong> – A node that has children.</li>
+            <li><strong>Leaf</strong> – A node with no children.</li>
+            <li><strong>Subtree</strong> – A tree formed from a node and its descendants.</li>
+        </ul>
+
+        <h2>Types of Binary Trees</h2>
+        <ul>
+            <li><strong>Full Binary Tree:</strong> Every node has 0 or 2 children.</li>
+            <li><strong>Complete Binary Tree:</strong> All levels are filled except possibly the last level.</li>
+            <li><strong>Perfect Binary Tree:</strong> All internal nodes have two children, and all leaves are at the same level.</li>
+            <li><strong>Balanced Binary Tree:</strong> Difference between heights of left and right subtree is not more than 1.</li>
+            <li><strong>Binary Search Tree (BST):</strong> Left < Root < Right</li>
+        </ul>
+
+        <h2>Tree Traversals</h2>
+        <ul>
+            <li><strong>Inorder (LNR):</strong> Left, Node, Right</li>
+            <li><strong>Preorder (NLR):</strong> Node, Left, Right</li>
+            <li><strong>Postorder (LRN):</strong> Left, Right, Node</li>
+            <li><strong>Level Order:</strong> Breadth-First Search (BFS)</li>
+        </ul>
+
+        <h2>Java Example: Inorder Traversal</h2>
+        <pre><code>class Node {
+    int data;
+    Node left, right;
+
+    public Node(int item) {
+        data = item;
+        left = right = null;
+    }
+}
+
+class BinaryTree {
+    Node root;
+
+    void inorder(Node node) {
+        if (node != null) {
+            inorder(node.left);
+            System.out.print(node.data + " ");
+            inorder(node.right);
+        }
+    }
+
+    public static void main(String[] args) {
+        BinaryTree tree = new BinaryTree();
+        tree.root = new Node(1);
+        tree.root.left = new Node(2);
+        tree.root.right = new Node(3);
+        tree.root.left.left = new Node(4);
+        tree.root.left.right = new Node(5);
+
+        System.out.print("Inorder traversal: ");
+        tree.inorder(tree.root);
+    }
+}
+        </code></pre>
+
+        <h3>Output</h3>
+        <pre>Inorder traversal: 4 2 5 1 3</pre>
+
+        <h2>Applications of Binary Trees</h2>
+        <ul>
+            <li>Hierarchical data representation (e.g., XML parser)</li>
+            <li>Binary Search Trees (BST) for efficient search</li>
+            <li>Expression trees (mathematical expressions)</li>
+            <li>Heap trees (priority queues)</li>
+        </ul>
+
+        <div class="assignment">
+            <h2>📘 Assignments</h2>
+            <ol>
+                <li>Write a program to perform inorder, preorder, and postorder traversal of a binary tree.</li>
+                <li>Create a binary tree and print all leaf nodes.</li>
+                <li>Find the height of a binary tree.</li>
+                <li>Check if a binary tree is a BST.</li>
+                <li>Insert a node in a Binary Search Tree and perform inorder traversal.</li>
+            </ol>
+        </div>
+
+        <div style="margin-top: 30px;">
+            <a href="services.html" class="btn btn-primary">&larr; Back to DSA Topics</a>
+        </div>
+    </div>
+</body>
+</html>

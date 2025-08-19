@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Stack and Queue in DSA</title>
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+            line-height: 1.7;
+            padding: 40px 15px;
+            background-color: #f9f9f9;
+        }
+        h1, h2, h3 {
+            color: #343a40;
+            margin-top: 30px;
+        }
+        ul, ol {
+            margin-left: 20px;
+        }
+        pre {
+            background: #f4f4f4;
+            padding: 15px;
+            border-radius: 6px;
+            overflow-x: auto;
+        }
+        .container {
+            max-width: 960px;
+            margin: auto;
+            background: #fff;
+            padding: 40px;
+            box-shadow: 0 0 20px rgba(0,0,0,0.1);
+        }
+        .assignment {
+            background: #e9f7ef;
+            padding: 20px;
+            border-left: 5px solid #2ecc71;
+            margin-top: 30px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Stacks and Queues in Data Structures</h1>
+
+        <h2>What is a Stack?</h2>
+        <p>A <strong>stack</strong> is a linear data structure that follows the <strong>LIFO (Last In First Out)</strong> principle. The last element inserted is the first one to be removed.</p>
+
+        <h3>Basic Operations on Stack</h3>
+        <ul>
+            <li><strong>push()</strong> – Adds an element to the top of the stack.</li>
+            <li><strong>pop()</strong> – Removes the topmost element.</li>
+            <li><strong>peek() / top()</strong> – Returns the topmost element without removing it.</li>
+            <li><strong>isEmpty()</strong> – Checks if the stack is empty.</li>
+        </ul>
+
+        <h3>Java Stack Example</h3>
+        <pre><code>import java.util.Stack;
+
+public class StackDemo {
+    public static void main(String[] args) {
+        Stack&lt;Integer&gt; stack = new Stack&lt;&gt;();
+        stack.push(10);
+        stack.push(20);
+        stack.push(30);
+        System.out.println("Top element: " + stack.peek());
+        stack.pop();
+        System.out.println("After pop, top: " + stack.peek());
+    }
+}</code></pre>
+
+        <h2>What is a Queue?</h2>
+        <p>A <strong>queue</strong> is a linear data structure that follows the <strong>FIFO (First In First Out)</strong> principle. The first element inserted is the first one to be removed.</p>
+
+        <h3>Basic Operations on Queue</h3>
+        <ul>
+            <li><strong>enqueue()</strong> – Adds an element to the end of the queue.</li>
+            <li><strong>dequeue()</strong> – Removes an element from the front of the queue.</li>
+            <li><strong>front() / peek()</strong> – Returns the front element.</li>
+            <li><strong>isEmpty()</strong> – Checks if the queue is empty.</li>
+        </ul>
+
+        <h3>Java Queue Example (Using LinkedList)</h3>
+        <pre><code>import java.util.LinkedList;
+import java.util.Queue;
+
+public class QueueDemo {
+    public static void main(String[] args) {
+        Queue&lt;Integer&gt; queue = new LinkedList&lt;&gt;();
+        queue.add(10);
+        queue.add(20);
+        queue.add(30);
+        System.out.println("Front: " + queue.peek());
+        queue.remove();
+        System.out.println("After dequeue, front: " + queue.peek());
+    }
+}</code></pre>
+
+        <h2>Applications</h2>
+        <ul>
+            <li>Stacks: Expression evaluation, Undo functionality, Recursion handling</li>
+            <li>Queues: Job scheduling, Call center systems, Data buffering</li>
+        </ul>
+
+        <div class="assignment">
+            <h2>📘 Assignments</h2>
+            <ol>
+                <li>Write a program to implement stack operations using arrays.</li>
+                <li>Write a program to implement queue using a circular array.</li>
+                <li>Simulate a stack using two queues.</li>
+                <li>Simulate a queue using two stacks.</li>
+            </ol>
+        </div>
+
+        <div style="margin-top: 30px;">
+            <a href="services.html" class="btn btn-primary">&larr; Back to DSA Topics</a>
+        </div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Greedy Algorithms in DSA</title>
+  <link rel="stylesheet" href="css/bootstrap.min.css" />
+  <style>
+    body {
+      font-family: 'Poppins', sans-serif;
+      line-height: 1.7;
+      padding: 40px 15px;
+      background-color: #f9f9f9;
+    }
+    h1, h2, h3 {
+      color: #343a40;
+      margin-top: 30px;
+    }
+    ul, ol {
+      margin-left: 20px;
+    }
+    pre {
+      background: #f4f4f4;
+      padding: 15px;
+      border-radius: 6px;
+      overflow-x: auto;
+    }
+    .container {
+      max-width: 960px;
+      margin: auto;
+      background: #fff;
+      padding: 40px;
+      box-shadow: 0 0 20px rgba(0,0,0,0.1);
+    }
+    .assignment {
+      background: #e9f7ef;
+      padding: 20px;
+      border-left: 5px solid #2ecc71;
+      margin-top: 30px;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>Greedy Algorithms in Data Structures</h1>
+
+    <p>
+      A <strong>Greedy Algorithm</strong> is a problem-solving approach where the best possible decision is made at each step, hoping it leads to the global optimal solution. It does not reconsider past decisions.
+    </p>
+
+    <h2>Characteristics of Greedy Algorithms</h2>
+    <ul>
+      <li>Builds solution piece by piece</li>
+      <li>Chooses the locally optimal choice at each step</li>
+      <li>Does not always give the globally optimal solution</li>
+      <li>Works well when the problem has the <strong>Greedy Choice Property</strong> and <strong>Optimal Substructure</strong></li>
+    </ul>
+
+    <h2>Common Greedy Problems</h2>
+    <ul>
+      <li>Activity Selection</li>
+      <li>Fractional Knapsack</li>
+      <li>Huffman Coding</li>
+      <li>Job Sequencing with Deadlines</li>
+      <li>Minimum Number of Coins</li>
+      <li>Kruskal's and Prim's Algorithms (for MST)</li>
+    </ul>
+
+    <h2>Example: Activity Selection</h2>
+    <p>Select the maximum number of activities that don't overlap, given start and finish times.</p>
+
+    <h3>Approach</h3>
+    <ul>
+      <li>Sort activities by finish time</li>
+      <li>Select the first activity</li>
+      <li>For every next activity, check if its start time is >= finish time of the last selected activity</li>
+    </ul>
+
+    <h3>Java Code: Activity Selection</h3>
+    <pre><code>import java.util.*;
+
+class Activity {
+    int start, end;
+
+    Activity(int start, int end) {
+        this.start = start;
+        this.end = end;
+    }
+}
+
+public class ActivitySelection {
+    public static void main(String[] args) {
+        Activity[] activities = {
+            new Activity(1, 3),
+            new Activity(2, 5),
+            new Activity(0, 6),
+            new Activity(8, 9),
+            new Activity(5, 9),
+            new Activity(5, 7)
+        };
+
+        Arrays.sort(activities, Comparator.comparingInt(a -> a.end));
+
+        int count = 1;
+        int lastEnd = activities[0].end;
+
+        System.out.println("Selected activities:");
+        System.out.println("(" + activities[0].start + ", " + activities[0].end + ")");
+
+        for (int i = 1; i < activities.length; i++) {
+            if (activities[i].start >= lastEnd) {
+                System.out.println("(" + activities[i].start + ", " + activities[i].end + ")");
+                lastEnd = activities[i].end;
+                count++;
+            }
+        }
+
+        System.out.println("Maximum number of non-overlapping activities: " + count);
+    }
+}
+    </code></pre>
+
+    <h2>Advantages of Greedy Algorithms</h2>
+    <ul>
+      <li>Easy to implement</li>
+      <li>Efficient for problems with greedy structure</li>
+      <li>Optimal for some well-defined problems</li>
+    </ul>
+
+    <h2>Limitations</h2>
+    <ul>
+      <li>Doesn't work for all problems</li>
+      <li>May not produce globally optimal solution</li>
+      <li>Requires problem to have greedy-choice and optimal substructure</li>
+    </ul>
+
+    <h2>Time Complexities</h2>
+    <ul>
+      <li>Activity Selection: O(n log n) (because of sorting)</li>
+      <li>Fractional Knapsack: O(n log n)</li>
+      <li>Job Sequencing: O(n log n)</li>
+    </ul>
+
+    <div class="assignment">
+      <h2>📘 Assignments</h2>
+      <ol>
+        <li>Implement the Activity Selection problem in C or Java.</li>
+        <li>Solve the Fractional Knapsack problem using a greedy approach.</li>
+        <li>Implement Kruskal’s algorithm for Minimum Spanning Tree.</li>
+        <li>Solve the coin change problem using greedy (Indian coin system).</li>
+        <li>Write code for job sequencing to maximize profits.</li>
+      </ol>
+    </div>
+
+    <div style="margin-top: 30px;">
+      <a href="services.html" class="btn btn-primary">&larr; Back to DSA Topics</a>
+    </div>
+  </div>
+</body>
+</html>

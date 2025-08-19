@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Linked List in DSA</title>
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+            line-height: 1.7;
+            padding: 40px 15px;
+            background-color: #f9f9f9;
+        }
+        h1, h2, h3 {
+            color: #343a40;
+            margin-top: 30px;
+        }
+        ul, ol {
+            margin-left: 20px;
+        }
+        pre {
+            background: #f4f4f4;
+            padding: 15px;
+            border-radius: 6px;
+            overflow-x: auto;
+        }
+        .container {
+            max-width: 960px;
+            margin: auto;
+            background: #fff;
+            padding: 40px;
+            box-shadow: 0 0 20px rgba(0,0,0,0.1);
+        }
+        .assignment {
+            background: #e9f7ef;
+            padding: 20px;
+            border-left: 5px solid #2ecc71;
+            margin-top: 30px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Linked List in Data Structures</h1>
+
+        <p>A <strong>linked list</strong> is a linear data structure in which elements are stored in nodes and linked using pointers. Unlike arrays, linked lists do not require contiguous memory and allow efficient insertions and deletions.</p>
+
+        <h2>Types of Linked Lists</h2>
+        <ul>
+            <li><strong>Singly Linked List:</strong> Each node has data and a pointer to the next node.</li>
+            <li><strong>Doubly Linked List:</strong> Each node points to both the next and previous nodes.</li>
+            <li><strong>Circular Linked List:</strong> The last node points back to the first node, forming a circle.</li>
+        </ul>
+
+        <h2>Structure of a Singly Linked List Node (in C)</h2>
+        <pre><code>struct Node {
+    int data;
+    struct Node* next;
+};</code></pre>
+
+        <h2>Advantages of Linked Lists</h2>
+        <ul>
+            <li>Dynamic size allocation (no need to declare size in advance)</li>
+            <li>Efficient insertions/deletions (especially at beginning/middle)</li>
+            <li>No memory wastage</li>
+        </ul>
+
+        <h2>Disadvantages</h2>
+        <ul>
+            <li>Extra memory for pointer storage</li>
+            <li>Sequential access only (no random access like arrays)</li>
+        </ul>
+
+        <h2>Basic Operations</h2>
+        <ul>
+            <li><strong>Insertion</strong>: At beginning, end, or any position</li>
+            <li><strong>Deletion</strong>: Remove a specific node</li>
+            <li><strong>Traversal</strong>: Visit every node one by one</li>
+            <li><strong>Search</strong>: Find node by value</li>
+        </ul>
+
+        <h2>C Program: Basic Linked List Traversal</h2>
+        <pre><code>#include &lt;stdio.h&gt;
+#include &lt;stdlib.h&gt;
+
+struct Node {
+    int data;
+    struct Node* next;
+};
+
+void printList(struct Node* n) {
+    while (n != NULL) {
+        printf("%d -> ", n->data);
+        n = n->next;
+    }
+    printf("NULL");
+}
+
+int main() {
+    struct Node* head = NULL;
+    struct Node* second = NULL;
+    struct Node* third = NULL;
+
+    head = (struct Node*)malloc(sizeof(struct Node));
+    second = (struct Node*)malloc(sizeof(struct Node));
+    third = (struct Node*)malloc(sizeof(struct Node));
+
+    head->data = 1;
+    head->next = second;
+
+    second->data = 2;
+    second->next = third;
+
+    third->data = 3;
+    third->next = NULL;
+
+    printList(head);
+    return 0;
+}
+        </code></pre>
+
+        <h3>Output</h3>
+        <pre>1 -> 2 -> 3 -> NULL</pre>
+
+        <h2>Java Example: Singly Linked List</h2>
+        <pre><code>class Node {
+    int data;
+    Node next;
+    
+    Node(int d) {
+        data = d;
+        next = null;
+    }
+}
+
+public class LinkedListExample {
+    Node head;
+
+    public void printList() {
+        Node n = head;
+        while (n != null) {
+            System.out.print(n.data + " -> ");
+            n = n.next;
+        }
+        System.out.println("NULL");
+    }
+
+    public static void main(String[] args) {
+        LinkedListExample list = new LinkedListExample();
+
+        list.head = new Node(1);
+        Node second = new Node(2);
+        Node third = new Node(3);
+
+        list.head.next = second;
+        second.next = third;
+
+        list.printList();
+    }
+}
+        </code></pre>
+
+        <h2>When to Use Linked Lists?</h2>
+        <ul>
+            <li>When the number of data elements is unknown beforehand</li>
+            <li>When frequent insertions and deletions are required</li>
+            <li>When dynamic memory allocation is preferred</li>
+        </ul>
+
+        <div class="assignment">
+            <h2>📘 Assignments</h2>
+            <ol>
+                <li>Create a singly linked list and insert nodes at the end.</li>
+                <li>Write a program to delete a node from a given position.</li>
+                <li>Implement a function to count the number of nodes.</li>
+                <li>Implement a search function to find a specific value in the linked list.</li>
+                <li>Reverse a singly linked list and print the result.</li>
+            </ol>
+        </div>
+    </div>
+
+   <div style="margin-top: 30px;">
+            <a href="services.html" class="btn btn-primary">&larr; Back to DSA Topics</a>
+        </div>
+</body>
+</html>
